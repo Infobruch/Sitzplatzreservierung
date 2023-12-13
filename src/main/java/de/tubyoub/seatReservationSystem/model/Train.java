@@ -20,8 +20,8 @@ public class Train {
 
   public void deleteReservation(int pWaggonNr, int pPlatzNr) {
     for (wagonList.toFirst(); wagonList.getContent().getNumber() != pWaggonNr && wagonList.hasAccess(); wagonList.next()) {
-
     }
+    wagonList.getContent().deleteReservation(pPlatzNr);
   }
 
   public int determineFirstFreeSeat(Wagon pWaggon) {

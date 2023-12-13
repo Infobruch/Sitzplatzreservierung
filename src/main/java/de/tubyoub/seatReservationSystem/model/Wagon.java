@@ -5,7 +5,7 @@ public class Wagon {
 
     private int nummer;
     private int anzahlPlaetze;
-        private List<Seat> sitzplaetze;
+    private Seat[] sitzplaetze;
 
     public Wagon(int pNummer, int pAnzahlPlaetze) {
         if (pAnzahlPlaetze % 4 != 0) {
@@ -14,11 +14,11 @@ public class Wagon {
 
         nummer = pNummer;
         anzahlPlaetze = pAnzahlPlaetze;
-        sitzplaetze = new List<>();
+        sitzplaetze = new Seat[pAnzahlPlaetze];
 
         // Initialize each seat in the wagon
         for (int i = 0; i < pAnzahlPlaetze; i++) {
-            sitzplaetze.append(new Seat());
+            sitzplaetze[i] = new Seat();
         }
     }
 
@@ -29,24 +29,38 @@ public class Wagon {
     public int getNumberOfSeats() {
         return anzahlPlaetze;
     }
+    public int getNumberOfFreeSeats(){
+        int numberOfFreeSeats = 0;
+        for (Seat seat : sitzplaetze) if (!seat.isReserved()) numberOfFreeSeats++;
+        return numberOfFreeSeats;
+    }
+
+    public boolean hasEnoughSeatsFor(int pSeatQuantity){
+        return getNumberOfFreeSeats() >= pSeatQuantity;
+    }
+
+    public int[] getNextFreeFourSeatArea(){
+        boolean foundOne = false;
+        for(int i = 3; i < sitzplaetze.length && !foundOne; i+=4){
+            if(!sitzplaetze[i].isReserved() && !sitzplaetze[i-1].isReserved() && !sitzplaetze[i-2].isReserved() && !sitzplaetze[i-3].isReserved())
+                return new int[]{getNumber(), i-3};
+        }
+        return new int[]{-1, -1};
+    }
 
     public boolean isSeatFree(int pPlatzNr) {
-        return true;
+        return !sitzplaetze[pPlatzNr].isReserved();
     }
 
     public void reserve(int pPlatzNr, String pKundenname) {
-
+        sitzplaetze[pPlatzNr].setReservation(pKundenname);
     }
 
     public void deleteReservation(int pPlatzNr) {
-    }
-
-    public int determineNumberOfFreeSeats() {
-        int freiePlaetze = 0;
-        return freiePlaetze;
+        sitzplaetze[pPlatzNr].delReservation();
     }
 
     public String getReservationOnSeat(int pPlatzNr) {
-            return null;
+            return sitzplaetze[pPlatzNr].getReservation();
     }
 }

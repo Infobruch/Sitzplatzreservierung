@@ -3,11 +3,11 @@ package de.tubyoub.seatReservationSystem.model;
 public class Seat {
     private boolean reserved;
 
-    private String seservedFor;
+    private String reservedFor;
 
     public Seat() {
         reserved = false;
-        seservedFor = null;
+        reservedFor = null;
     }
 
     public boolean isReserved() {
@@ -15,20 +15,20 @@ public class Seat {
     }
 
     public String getReservation() {
-        return seservedFor;
+        return reservedFor;
     }
 
     public void setReservation(String pCustomerName) {
         if (!reserved) {
             reserved = true;
-            seservedFor = pCustomerName;
+            reservedFor = pCustomerName;
         }
     }
 
     public void delReservation() {
         if (reserved) {
             reserved = false;
-            seservedFor = null;
+            reservedFor = null;
         }
     }
 }

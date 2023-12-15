@@ -5,16 +5,17 @@ public class Test {
     public static void main(String[] args) {
         Test test = new Test();
         TrainManagement trainMngr = new TrainManagement();
-        test.CreateTrains(trainMngr);
+        test.CreateTrain(trainMngr, "Thomas");
+        test.CreateTrain(trainMngr, "Gordan");
+        test.CreateTrain(trainMngr, "Percy");
+        System.out.println(trainMngr.);
     }
-    public void CreateTrains(TrainManagement pTrainmngr){
-        Train train = new Train("Thomas");
+    public void CreateTrain(TrainManagement pTrainmngr, String pTrainID){
+        Train train = new Train(pTrainID);
 
         pTrainmngr.addTrain(train);
-        pTrainmngr.appendWagon("Thomas", 0, 4);
-        pTrainmngr.appendWagon("Thomas", 1, 56);
-        pTrainmngr.appendWagon("Thomas", 2, 16);
-
-        }
+        pTrainmngr.appendWagon(pTrainID, 0, (int)(Math.random()*10)*4);
+        pTrainmngr.appendWagon(pTrainID, 1, (int)(Math.random()*10)*4);
+        pTrainmngr.appendWagon(pTrainID, 2, (int)(Math.random()*10)*4);
     }
 }

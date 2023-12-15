@@ -9,8 +9,18 @@ public class Train {
     wagonList = new List<Wagon>();
     id = pBezeichner;
   }
-  public void appendNewWagon(int pID, int pSeatQuantity){
-    this.wagonList.append(new Wagon(pID, pSeatQuantity));
+  public void appendNewWagon(int pWagonID, int pSeatQuantity){
+    this.wagonList.append(new Wagon(pWagonID, pSeatQuantity));
+  }
+  public void clearWagon(int pWagonID){
+    searchForWagon(pWagonID);
+    Wagon wagonToClear = wagonList.getContent();
+    wagonList.toFirst();
+    for (int e = 0; e < wagonToClear.getNumberOfSeats(); e++) {
+      if(!wagonToClear.isSeatFree(e)){
+        while(wagonList.hasAccess() && (wagonToClear == wagonList.getContent() || wagonList.getContent().getNumberOfFreeSeats() == 0))wagonList.next();
+      }
+    }
   }
   public String getIdentifier() {
     return id;

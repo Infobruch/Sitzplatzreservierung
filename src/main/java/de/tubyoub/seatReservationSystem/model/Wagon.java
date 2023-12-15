@@ -53,7 +53,7 @@ public class Wagon {
     }
 
     public void reserve(int pPlatzNr, String pKundenname) {
-        sitzplaetze[pPlatzNr].setReservation(pKundenname);
+        if(!sitzplaetze[pPlatzNr].isReserved())sitzplaetze[pPlatzNr].setReservation(pKundenname);
     }
 
     public void deleteReservation(int pPlatzNr) {

@@ -8,7 +8,8 @@ public class Test {
         test.CreateTrain(trainMngr, "Thomas");
         test.CreateTrain(trainMngr, "Gordan");
         test.CreateTrain(trainMngr, "Percy");
-        System.out.println(trainMngr.);
+        trainMngr.getTrains().toFirst();
+        System.out.println(trainMngr.getTrains().getContent().getIdentifier());
     }
     public void CreateTrain(TrainManagement pTrainmngr, String pTrainID){
         Train train = new Train(pTrainID);

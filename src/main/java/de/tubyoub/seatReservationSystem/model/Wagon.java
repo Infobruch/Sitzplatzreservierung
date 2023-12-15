@@ -7,17 +7,17 @@ public class Wagon {
     private int anzahlPlaetze;
     private Seat[] sitzplaetze;
 
-    public Wagon(int pNummer, int pAnzahlPlaetze) {
-        if (pAnzahlPlaetze % 4 != 0) {
+    public Wagon(int pNummer, int pSeatQuantity) {
+        if (pSeatQuantity % 4 != 0) {
             throw new IllegalArgumentException("Number of seats must be divisible by 4.");
         }
 
         nummer = pNummer;
-        anzahlPlaetze = pAnzahlPlaetze;
-        sitzplaetze = new Seat[pAnzahlPlaetze];
+        anzahlPlaetze = pSeatQuantity;
+        sitzplaetze = new Seat[pSeatQuantity];
 
         // Initialize each seat in the wagon
-        for (int i = 0; i < pAnzahlPlaetze; i++) {
+        for (int i = 0; i < pSeatQuantity; i++) {
             sitzplaetze[i] = new Seat();
         }
     }

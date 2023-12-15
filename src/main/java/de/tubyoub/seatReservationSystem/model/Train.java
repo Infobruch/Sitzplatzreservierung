@@ -6,11 +6,11 @@ public class Train {
   List<Wagon> wagonList;
   String id;
   public Train(String pBezeichner) {
-    List<Wagon> wagonList = new List<Wagon>();
+    wagonList = new List<Wagon>();
     id = pBezeichner;
   }
   public void appendNewWagon(int pID, int pSeatQuantity){
-    wagonList.append(new Wagon(pID, pSeatQuantity));
+    this.wagonList.append(new Wagon(pID, pSeatQuantity));
   }
   public String getIdentifier() {
     return id;

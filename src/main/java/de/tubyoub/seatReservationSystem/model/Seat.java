@@ -39,7 +39,7 @@ public class Seat {
     /**
      * Reserves the seat for a specific customer.
      *
-     * @param pKundenname The name of the customer.
+     * @param pCustomerName The name of the customer.
      */
     public void setReservation(String pCustomerName) {
         if (!reserved) {

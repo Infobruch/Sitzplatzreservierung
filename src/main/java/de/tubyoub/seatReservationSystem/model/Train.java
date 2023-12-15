@@ -21,6 +21,15 @@ public class Train {
         while(wagonList.hasAccess() && (wagonToClear == wagonList.getContent() || wagonList.getContent().getNumberOfFreeSeats() == 0))wagonList.next();
       }
     }
+
+  /**
+   * Appends a new wagon to the train.
+   *
+   * @param pID The identifier of the new wagon.
+   * @param pSeatQuantity The number of seats in the new wagon.
+   */
+  public void appendNewWagon(int pID, int pSeatQuantity){
+    wagonList.append(new Wagon(pID, pSeatQuantity));
   }
   public String getIdentifier() {
     return id;
